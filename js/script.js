@@ -1,72 +1,16 @@
 "use strict";
+// alert('Hello');
+// const result = confirm('are you here?');
+// console.log(result);
 
-// 11. (д) Разница между объектами и массивами
+// const answer = prompt('are you have 18?', ''); // что бы не ответил пользователь это будет строка . STRING 
+// console.log(typeof(answer)); // оператор typeof () проверяет на тип данных и выводит в консоле
+// console.log(answer +5);
 
-// Массив - частный случай объекта 
+const answers = [];
 
-const arr = [1, 2, 3]; // Массив перечень по порядку
-const arrObj = {
-    0: 'a',
-    1: 'b',
-    2: 'c'
-};
+answers[0] = prompt('What is your first name?', ''),
+answers[1] = prompt('What is your second name?', '');
+answers[2] = prompt('How old are you', '');
 
-const b = 'b'; // 
-
-
-// arrObj.b = '12345';
-arrObj['b'] = '1234'; // так же мы можем создавать такие свойства при помощи [ ] скобок
-
-// console.log(arrObj[b]);  //получаем ошибку , потому что в [b] передает не какую-то строчку, 
-                        //  а здесь JS считает что мы  передали какую то переменную, поэтому
-                        // мы должны поместить строку , что бы не получить ошибку
-
-console.log(arrObj['b']); // в такой записи код стработает, здесь мы обращаемся к свойству через строку
-                          
-console.log(arrObj.b); // так же мы можем обращаться через точку. JS сразу знает что мы обращаемся к свойству 
-
-
-
-// console.log(arr[1]);        // индекс номер порядку
-console.log(arrObj[1]);     // более надежно иногда использоваться [] 
-
-
-
-
-
-const obj = {          //
-    'Anna': 500,
-    'Alice': 800        // в обьекте порядок не так важен
-};
-console.log(obj);
-
-
-
-
-arr[10] = '3456'; // МАССИВЫ НЕ ДОЛЖНЫ СОДЕРЖАТЬ ПУСТЫЕ ЯЧЕЙКИ, НАРУШАЕТ ЛОГИКУ РАБОТЫ МАССИВА
-console.log(arr); 
-
-//  ВНУТРИ ОБЪЕКТОВ МЫ МОЖЕМ СОЗДАВАТЬ ДРУГИЕ ОБЪЕКТЫ 
-
-const arrObj = {
-    a: '1',
-    abc: {
-        df: [{}, {}],
-        def: {
-             
-        }
-    }
-};
-
-
-
-const storeName = '5';
-const storeDescription = {
-    budget: 10000,
-    employees: ['Andrew','Scot','Piter'],
-    products: {
-        itemA: '10',
-        itemB: '20'
-    },
-    open: true
-};
+document.write(typeof(answers));

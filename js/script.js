@@ -1,40 +1,34 @@
 "use strict";
 
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function() {
-        console.log('test')
-    }
-};
+const arr = [1,32,23,6,8];
+arr.sort(compareNum);
+console.log(arr);
 
-// console.log(Object.keys(options))
+function compareNum (a,b) {
+    return a - b;
+}
 
-options.makeTest();
+arr.pop()
+// arr.push(10)
+console.log(arr);
+
+for (let value of arr) {
+    console.log(value);
+}
+
+arr.forEach(function (item, i, arr) {
+    console.log(`${i}: ${item} внутри массива ${arr}`);
+})
+
+const str = prompt('','');
+const products = str.split(', ');
+products.sort();
+
+console.log(products.join(';'));
 
 
-const {border, bg} = options.colors;
-console.log(border);
 
-
-// delete options.colors;
-
-
-let count = 0;
-for (let key in options) {
-    // if (typeof(options[key]) === 'object') {
-    //     for (let i in options[key]) {
-    //         console.log(`Свойство ${i} имеет значение ${options[key][i]}`)
-    //     }
-    // } else {
-    //     console.log(`Свойство ${key} имеет значение ${options[key]}`)
-    // }
-    count++
-};
-console.log(count)
-
+const arr = [1,2,3,4,5];
+arr.pop(); // pop - удаляет последний элемент массива 
+arr.push('qwerty'); // push добавляет элемент в конец списку в скобках push('ЭЛЕМЕНТ')
+console.log(arr);

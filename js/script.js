@@ -184,7 +184,11 @@ console.log(i)
 
 
 
+<<<<<<< HEAD
 // ЦИКЛ В ЦИКЛЕ
+=======
+// 
+>>>>>>> refs/remotes/origin/main
 
 for (let i = 0; i < 3; i++) {
     console.log(i);
@@ -201,7 +205,11 @@ for (let i = 1; i < 7; i++) {
     }
     result += '\n';
 }
+<<<<<<< HEAD
 console.log(result); 
+=======
+console.log(result);
+>>>>>>> refs/remotes/origin/main
 
 
 

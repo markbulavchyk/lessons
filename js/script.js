@@ -2,49 +2,52 @@
 
 // Условия if - если , else - если 2 , если неверное условие if 
 
-if (4 == 9) {
-    console.log('ok!');
+// const hamburger = 5;
+// const fries = undefined;
+
+// if (hamburger && fries) {
+//     console.log('i am full');
+// };
+
+// console.log(1 && 0); 
+// console.log(1 && 5); 
+// console.log(null && 5); 
+// console.log(0 && 'jnrqqjirq'); 
+
+const hamburger = 3;
+const fries = 3;
+const cola = 0;
+const nuggets = 2;
+
+// i + , ili menshe
+if (hamburger === 3 && cola === 2 || fries === 3 && nuggets) {
+    console.log('Not hungry');
 } else {
-    console.log('error!');
+    console.log('We go');
+};
+console.log(hamburger === 3 && cola === 2 || fries === 3 && nuggets);
+
+console.log(!0);
+
+let johnReport,
+    alexReport,
+    samReport,
+    mariaReport = 'done';
+
+console.log(johnReport || alexReport || samReport || mariaReport);
+
+
+
+let hamburgerA;
+const friesA = 3;
+const colaA = 0;
+const nuggetsA = 2;
+
+
+if (hamburgerA && colaA || friesA === 3 && nuggetsA) {
+   console.log('Done!')
+   console.log((hamburgerA && colaA || friesA === 3 && nuggetsA))
 }
 
-// Условие превращает любой тип данных в булиновый 
 
-if (1) { // если знает будет одно , например 1 - то это всегда тру ,правда
-    console.log('ok!');
-} else {
-    console.log('error!');
-}
 
-const num = 48;
-if (num > 49) {
-    console.log('error');
-} else if (num > 100) {
-    console.log('mnogo');
-} else {
-    console.log('ok');
-}
-
-// тернарный оператор , если это выполнилось (num === 50) после ? идёт действие в случаи правдивого условия 
-// и дальше после console.log('ok') : необходимо написать действие которое выполнится если  (num === 50)  не выполнится 
-/// оператор называется тернарным потому что в его работе учавствует 3 аргумента , единственный ДЖС тернарный оператор
-
-(num === 50) ? console.log('ok') : console.log('error');
-
-const numb = 50; 
-switch (numb) { // конструкция свич всегда идет на строгое сравнение, в отличии от других условий 
-    case 49:
-        console.log('Неверно');
-        break; // если вдруг намб будет равнятся 49 то что бы код не пошел дальше после консоль лог, брейк его останавливает
-    case 100:
-        console.log('Неверно');
-        break;
-    case 50:
-        console.log('В ТОЧКУ');
-        break;
-    default:   // и если вдруг ничего не подошло , выполнить действие по умолчанию
-        console.log('не в этот раз(');
-        break;
-}
-
-switch (num)

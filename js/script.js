@@ -1,27 +1,20 @@
 "use strict";
 
-function showFirstMessage(text) {
-    console.log(text);
+// const summ = +prompt('Введи суму долларов - которую хочеш поменять на грн','');
+
+// function convert (summ) {
+//     console.log(28 * summ + 'грн');
+//     console.log('курс валют')
+// }
+// convert(summ);
+
+const usdCurr = 28;
+const eurCurr = 32;
+
+function convert (amount, curr) {
+    console.log(curr * amount);
 }
-showFirstMessage('');
 
-function calc (a, b) {
-    return (a + b);
-    
-}
-
-console.log(calc(4 , 3));
-
-
-function ret() {
-    let num = 50;
-
-    return num;
-}
-const anotherNum = ret();
-console.log(anotherNum);
-
-
-const logger =  () => {
-    console.log('log');
-};
+//    500 - amount  *  usdCurr - curr
+convert(500, usdCurr);
+convert(500, eurCurr);

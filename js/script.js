@@ -1,16 +1,12 @@
 "use strict";
-// alert('Hello');
-// const result = confirm('are you here?');
-// console.log(result);
+const category = 'toys';
 
-// const answer = prompt('are you have 18?', ''); // что бы не ответил пользователь это будет строка . STRING 
-// console.log(typeof(answer)); // оператор typeof () проверяет на тип данных и выводит в консоле
-// console.log(answer +5);
+console.log(`https://someurl.com/${category}/5`);
 
-const answers = [];
+// работает только с использованием косых кавычек
 
-answers[0] = prompt('What is your first name?', ''),
-answers[1] = prompt('What is your second name?', '');
-answers[2] = prompt('How old are you', '');
+const user = 'Ivan';
+alert(`Privet, ${user}`);
 
-document.write(typeof(answers));
+// Интерполяция работает только со строками в бэктиках. Это символ `.
+// Почти во всех языках интерполяция предпочтительнее конкатенации для объединения строк.

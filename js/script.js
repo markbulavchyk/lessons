@@ -1,58 +1,46 @@
 "use strict";
 
-// to String
+// let number = 5; debugger
 
-// 1) превращаем в строку 
+// function logNumber() {
+    
+//     console.log(number);debugger
+// }
 
-console.log(typeof(String(null)));
-console.log(typeof(String(4)));
+// number = 6; 
 
-// 2)
+// logNumber(); debugger
 
-console.log(typeof(5 + ''));
+// number = 8; 
 
-const num = 5;
-
-console.log('https://vk.com/catalog/' + num);
-
-
-const fontSize = 26 + 'px';
-
-console.log();
-
-// To Number
-
-//1) 
-
-console.log(typeof(Number('4')));
-
-//2) унарный плюс
-
-console.log(typeof+('4'));
-
-// 3)
-
-console.log(typeof(parseInt('15px',10)));
+// logNumber(); debugger
 
 
+function createCounter() {
+    let counter = 0;
 
-let answ = +prompt('hello', '');
+    const myFunction = function() {debugger
+        counter = counter + 1;debugger
 
+        return counter;debugger
+    }
 
-// To boolean
-
-// 1 -й способ
-
-let switcher = null;
-
-if(switcher) {
-    console.log('Working');
+    return myFunction;
 }
 
-// 2-й способ
+const increment = createCounter();
 
-console.log(typeof(Boolean('4')));
+debugger
+const c1 = increment();debugger
+const c2 = increment();debugger
+const c3 = increment();debugger
 
-// 3-й способ 
+console.log(c1,c2,c3);
 
-console.log(typeof(!!'4'));
+
+// example lexical environmnet , msg exist only inside { }
+
+// {
+//     let msg = 'hello';
+// }
+// console.log(msg);

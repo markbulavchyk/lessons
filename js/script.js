@@ -1,60 +1,75 @@
 'use strict';
 
-const box = document.getElementById('box');
-const btns = document.getElementsByTagName('button');
-const circles = document.getElementsByClassName('circle');
-const wrapper = document.querySelector('.wrapper');
-const hearts = document.querySelectorAll('.heart');
-const oneHeart = document.querySelector('.heart');
+/* Задания на урок:
+
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+const promoADV = document.querySelectorAll('.promo__adv');
+for (let i = 0; i < promoADV.length; i++) {
+    promoADV[i].remove();
+};
+// Удалил рекламу
+// for (let i = 0; i < promoADV.length; i++) {
+//     promoADV[i].innerHTML = ''; // удаляем при помощи innerHTML
+// };
+// удаляем рекламу при помощи forEach
+
+// promoADV.forEach(item => {
+//     item.remove();
+// })
+
+const promoGenre = document.querySelector('.promo__genre');
+// promoGenre.innerHTML = 'драма';
+promoGenre.textContent = 'драма';
+// promoGenre.replaceWith('драма');
+// Изменил жанр 
 
 
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px';
+const promoBG = document.querySelector('.promo__bg');
+promoBG.style.cssText = 'background-image: url(img/bg.jpg);'
+// document.querySelector('.promo__bg').style.cssText = 'background-image: url(img/bg.jpg);'
+// Изменить задний фон
 
-btns[1].style.borderRadius = '100%';
-// circles[1].style.backgroundColor = 'red';
 
-// for (let i = 0; i < circles.length; i++) {
-//     circles[i].style.backgroundColor = 'red';
+const movieList = document.querySelector('.promo__interactive-list');
+movieList.innerHTML = '';
+//очищаем елемент МовиЛист
+
+// for (let i = 0; i < document.querySelectorAll('.promo__interactive-item').length; i++) {
+      
 // }
 
-box.style.cssText = 'background-color: blue; width: 500px';
+movieDB.movies.sort();
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+// console.log(document.querySelector('.promo__bg').innerHTML);
+// можем получить элементы верстки в консоль
+
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+            <div class="delete"></div>
+        </li>
+    
+    `;
 });
 
-const div = document.createElement('div');
-const text = document.createTextNode('I WAS HERE');
-
-div.classList.add('black');
-
-// document.body.append(div);
-
-wrapper.append(div);
-// wrapper.appendChild(div);
-// wrapper.prepend(div);
-
-// hearts[0].before(div); вставляет перед
-// hearts[0].after(div);\ вставляет после 
-
-
-// wrapper.insertBefore(div, hearts[0]); 
-// старая вариация до появления бефора афтер и препенд
-
-
-// circles[0].remove();  удаляет выбраный элемент
-// wrapper.removeChild(hearts[0]); // удаляет так же , указывай РОДИТЕЛЯ (wrapper) и выбираем элемент hearts[0]
-
-
-
-// hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0])
-
-
-div.innerHTML = '<h2> Hello World</h2>'; 
-// поместили внутрь блока div текст 
-
-// div.textContent = 'Hello';
-
-div.insertAdjacentHTML('afterbegin' ,"<h2>hello ADJACENT</h2>");

@@ -1,75 +1,67 @@
-'use strict';
+"use strict";
 
-/* Задания на урок:
+const btn = document.querySelectorAll('button'),
+      overlay = document.querySelector('.overlay');
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
+// console.log(btn);
 
-2) Изменить жанр фильма, поменять "комедия" на "драма"
-
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
-
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
-
-5) Добавить нумерацию выведенных фильмов */
-
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
-
-const promoADV = document.querySelectorAll('.promo__adv');
-for (let i = 0; i < promoADV.length; i++) {
-    promoADV[i].remove();
-};
-// Удалил рекламу
-// for (let i = 0; i < promoADV.length; i++) {
-//     promoADV[i].innerHTML = ''; // удаляем при помощи innerHTML
-// };
-// удаляем рекламу при помощи forEach
-
-// promoADV.forEach(item => {
-//     item.remove();
-// })
-
-const promoGenre = document.querySelector('.promo__genre');
-// promoGenre.innerHTML = 'драма';
-promoGenre.textContent = 'драма';
-// promoGenre.replaceWith('драма');
-// Изменил жанр 
-
-
-const promoBG = document.querySelector('.promo__bg');
-promoBG.style.cssText = 'background-image: url(img/bg.jpg);'
-// document.querySelector('.promo__bg').style.cssText = 'background-image: url(img/bg.jpg);'
-// Изменить задний фон
-
-
-const movieList = document.querySelector('.promo__interactive-list');
-movieList.innerHTML = '';
-//очищаем елемент МовиЛист
-
-// for (let i = 0; i < document.querySelectorAll('.promo__interactive-item').length; i++) {
-      
+// btn.onclick = function() {
+//     alert('Click');
 // }
 
-movieDB.movies.sort();
+// btn.onclick = function() {
+//     alert('Second Click');
+// }
 
-// console.log(document.querySelector('.promo__bg').innerHTML);
-// можем получить элементы верстки в консоль
+// btn.addEventListener('click', () => {
+//     alert('Click')
+// });
 
-movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
-        <li class="promo__interactive-item">${i + 1} ${film}
-            <div class="delete"></div>
-        </li>
-    
-    `;
-});
+// btn.addEventListener('mouseenter', (e) => {
+//     console.log(e.target);
+//     e.target.remove();
+//     // console.log('Click');
+// });
 
+// const deleteElement = (e) => {
+//     console.log(e.target);
+// };
+
+
+
+// btn.addEventListener('click', deleteElement) // назначает обработчик
+// btn.removeEventListener('click', deleteElement) // удаляет обработчик
+
+// let i = 0;
+// const deleteElement = (e) => {
+//     console.log(e.target);
+//     i++;
+//     if (i == 1) {
+//         btn.removeEventListener('click', deleteElement)
+//     }
+//     console.log(i);
+// };
+
+// btn.addEventListener('click',deleteElement)
+// console.log(i);
+
+const deleteElement = (e) => {
+    console.log(e.currentTarget);
+    console.log(e.type);
+}
+// btn.addEventListener('click',deleteElement)
+// overlay.addEventListener('click',deleteElement)
+
+
+btn.forEach(btn => {
+    btn.addEventListener('click',deleteElement)
+})
+
+
+const link = document.querySelector('a');
+
+link.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    console.log(event.target);
+})

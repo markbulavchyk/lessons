@@ -1,67 +1,31 @@
 "use strict";
 
-const btn = document.querySelectorAll('button'),
-      overlay = document.querySelector('.overlay');
+// console.log(document.head);
 
-// console.log(btn);
+// console.log(document.body);
 
-// btn.onclick = function() {
-//     alert('Click');
-// }
+// console.log(document.documentElement);
 
-// btn.onclick = function() {
-//     alert('Second Click');
-// }
+console.log(document.body.childNodes);
 
-// btn.addEventListener('click', () => {
-//     alert('Click')
-// });
+// console.log(document.body.firstChild);
+// console.log(document.body.lastChild);
 
-// btn.addEventListener('mouseenter', (e) => {
-//     console.log(e.target);
-//     e.target.remove();
-//     // console.log('Click');
-// });
+// console.log(document.querySelector("#current").parentNode.parentNode.parentNode);
 
-// const deleteElement = (e) => {
-//     console.log(e.target);
-// };
+// console.log(document.querySelector('[data-current="3"]').nextSibling);
+// console.log(document.querySelector('[data-current="3"]').previousSibling);
+
+// console.log(document.querySelector('[data-current="3"]').nextElementSibling);
+// console.log(document.querySelector('[data-current="3"]').previousElementSibling);
+
+// console.log(document.querySelector('#current').parentElement);
 
 
+for (let node of document.body.childNodes) {
+    if (node.nodeName == '#text') {
+        continue;      
+    }
+    console.log(node);
+};
 
-// btn.addEventListener('click', deleteElement) // назначает обработчик
-// btn.removeEventListener('click', deleteElement) // удаляет обработчик
-
-// let i = 0;
-// const deleteElement = (e) => {
-//     console.log(e.target);
-//     i++;
-//     if (i == 1) {
-//         btn.removeEventListener('click', deleteElement)
-//     }
-//     console.log(i);
-// };
-
-// btn.addEventListener('click',deleteElement)
-// console.log(i);
-
-const deleteElement = (e) => {
-    console.log(e.currentTarget);
-    console.log(e.type);
-}
-// btn.addEventListener('click',deleteElement)
-// overlay.addEventListener('click',deleteElement)
-
-
-btn.forEach(btn => {
-    btn.addEventListener('click',deleteElement)
-})
-
-
-const link = document.querySelector('a');
-
-link.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    console.log(event.target);
-})

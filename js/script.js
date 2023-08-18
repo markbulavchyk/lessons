@@ -1,111 +1,108 @@
 "use strict";
 
-// function pow(x,n) {
-//     let result = 1;
-
-//     for (let i = 0; i < n; i++) {
-//         result *= x;
-//         // result = x * result; 
-//     }
-
-//     return result;
-// }
-
-// function pow(x,n) {
-//     if (n === 1) {
-//         return x; 
-//     } else { debugger
-//         return x * pow(x,n - 1); 
-//     }
-// }
-
-// console.log(pow(2, 1)); //  2
-// console.log(pow(2, 2)); //  4
-// console.log(pow(2, 3)); // 8
-// console.log(pow(2, 4)); // 16
-
-
-
-let students = {
-    js: [{
-        name: 'John',
-        progress: 100
-    }, {
-        name: 'Ivan',
-        progress: 60
-    }],
-
-    html: {
-        basic: [{
-            name: 'Peter',
-            progress: 20
-        }, {
-            name: 'Ann',
-            progress: 18
-        }],
-
-        pro: [{
-            name: 'Sam',
-            progress: 10
-        }],
-        semi: {
-            students: [{
-                name: 'Test',
-                progress: 100
-            }]
-        }
+let t = 0; 
+function f1() {
+    t++
+    console.log(t);
+    if (t === 10) {
+        return;
     }
-};
+    f1()
+}
+// f1();
 
-function getTotalProgressByIteration(data) {
-    let total = 0;
-    let students = 0;
-
-    for (let course of Object.values(data)) {
-        // 1 ВЕВТЛЕНИЕ ЕСЛИ ПОПАДАЕМ НА МАССИВ
-        if (Array.isArray(course)) {
-            students += course.length; // т.к это массив у него есть свойство длины
-
-            for (let i = 0; i < course.length; i++) {
-                total += course[i].progress; // где курс[i] это студент[0] с его личным прогрессом 
-            }
-        } else { // ВЕТВЛЕНИЕ ЕСЛИ ПОПАДЕМ НА ОБЪЕКТ
-            for (let subCourse of Object.values(course)) {
-                students += subCourse.length;
-                for (let i = 0; i < subCourse.length; i++) {
-                    total += subCourse[i].progress; // где курс[i] это студент[0] с его личным прогрессом 
-                }
-            }
-        }
+function f2 () {
+    let out = '';
+    for (let i = 1; i <= 30; i++) {
+        out += i + ' ';
     }
-
-    return total / students; 
+    console.log(out);
 }
 
-// console.log(getTotalProgressByIteration(students));
+// f2();
+
+let i = 0;
+let out = '';
+function f3 () {
+    i++;
+    out += i + ' ';
+    if (i >= 30) return;
+    f3();
+}
+
+f3();
+
+console.log(out);
+
+// лицо с низкой соц. ответственностью 
 
 
-// функция работает с любой вложеностью 
-function getTotalProgressByRecursion(data) {
+function randomIntegar (min, max) {
+    // случайное число от min до (max + 1)
     
-    // 1 ВЕВТЛЕНИЕ ЕСЛИ ПОПАДАЕМ НА МАССИВ
-    if (Array.isArray(data)) {
-        let total = 0;
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+}
 
-        for (let i = 0; i < data.length; i++) {
-            total += data[i].progress; // где курс[i] это студент[0] с его личным прогрессом 
-        }
 
-        return [total,data.length];
-    } else {
-        let total = [0, 0];
+let s1 = 0;
+function moneyRecursion () {
+    let m = randomIntegar(0,100);
+    s1 += m;
+    console.log('sum: ' + s1);
+    if (s1 >= 300) return;
+    moneyRecursion()
+}
+// moneyRecursion()
 
-        for (let subData of Object.values(data)) {
-            const subDataArr = getTotalProgressByRecursion(subData);
-            total[0] += subDataArr[0];
-            total[1] += subDataArr[1];
-        } return total;
+function moneyCycle() {
+    let s2 = 0;
+    while (true) {
+        let m = randomIntegar(0,100);
+        s2 += m;
+        console.log('sum: ' + s2);
+        if (s2 >= 300) return;
     }
 }
-const result = getTotalProgressByRecursion(students);
-console.log(result[0] / result[1]);
+moneyCycle()
+
+
+
+// факториал (произведение чисел)
+
+// факториал 5 
+
+// 1 * 2 * 3 * 4 * 5
+
+function fact(n) {
+    let s = 1;
+    for (let i = 1; i <= n; i++) {
+        s = s * i;
+    }
+    return s
+}
+console.log(fact(5));
+
+
+let s = 1;
+
+function fact2(n) {
+    if (n == 0) return;
+    s = s * n;
+    fact2(n-1)
+}
+fact2(5)
+console.log(s);
+
+function factorial (n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+const number = 5;
+const result = factorial(number)
+
+console.log('Факториал числа:' + number + 'равен' + result);

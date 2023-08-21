@@ -1,108 +1,92 @@
-"use strict";
+'use strict';
 
-let t = 0; 
-function f1() {
-    t++
-    console.log(t);
-    if (t === 10) {
-        return;
-    }
-    f1()
-}
-// f1();
+document.addEventListener('DOMContentLoaded', () => {
 
-function f2 () {
-    let out = '';
-    for (let i = 1; i <= 30; i++) {
-        out += i + ' ';
-    }
-    console.log(out);
-}
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
-// f2();
+    const adv = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
+        addForm = document.querySelector('form.add'),
+        addInput = addForm.querySelector('.adding__input'),
+        checkbox = addForm.querySelector('[type="checkbox"]');
 
-let i = 0;
-let out = '';
-function f3 () {
-    i++;
-    out += i + ' ';
-    if (i >= 30) return;
-    f3();
-}
+     addForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-f3();
+        let newFilm = addInput.value;
+        const favorite = checkbox.checked;
 
-console.log(out);
+        if(newFilm) {
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0,22)}...`;
+            }
+            if (favorite) {
+                console.log('Добавляем любимый фильм');
+            }
 
-// лицо с низкой соц. ответственностью 
-
-
-function randomIntegar (min, max) {
-    // случайное число от min до (max + 1)
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
     
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-}
+            createMovieList(movieDB.movies, movieList);
+        }
 
+       
 
-let s1 = 0;
-function moneyRecursion () {
-    let m = randomIntegar(0,100);
-    s1 += m;
-    console.log('sum: ' + s1);
-    if (s1 >= 300) return;
-    moneyRecursion()
-}
-// moneyRecursion()
+        event.target.reset();
+     });
 
-function moneyCycle() {
-    let s2 = 0;
-    while (true) {
-        let m = randomIntegar(0,100);
-        s2 += m;
-        console.log('sum: ' + s2);
-        if (s2 >= 300) return;
+    const deleteAdv = (arr) => {
+        arr.forEach (item => {
+            item.remove();
+        });
     }
-}
-moneyCycle()
+
+    
+
+    const makeChanges = () => {
+        genre.textContent = 'драма';
+
+        poster.style.backgroundImage = 'url("img/bg.jpg")'
+    };
 
 
-
-// факториал (произведение чисел)
-
-// факториал 5 
-
-// 1 * 2 * 3 * 4 * 5
-
-function fact(n) {
-    let s = 1;
-    for (let i = 1; i <= n; i++) {
-        s = s * i;
+    const sortArr = (arr) => {
+        arr.sort();
     }
-    return s
-}
-console.log(fact(5));
 
 
-let s = 1;
 
-function fact2(n) {
-    if (n == 0) return;
-    s = s * n;
-    fact2(n-1)
-}
-fact2(5)
-console.log(s);
+    function createMovieList (films, parent) {
+        parent.innerHTML = '';
+        sortArr(films);
+        films.forEach((film,i) => {
+            parent.innerHTML += `
+                <li class="promo__interactive-item">${i+ 1} ${movieDB.movies[i]}
+                    <div class="delete"></div>
+                </li>
+            `;
+        });
 
-function factorial (n) {
-    if (n === 0) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
+        document.querySelectorAll('.delete').forEach((btn,i) => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i,1);
+                createMovieList(films, parent);
+            })
+        });
     }
-}
+    deleteAdv(adv);
+    makeChanges();
+    createMovieList(movieDB.movies, movieList);
 
-const number = 5;
-const result = factorial(number)
-
-console.log('Факториал числа:' + number + 'равен' + result);
+});

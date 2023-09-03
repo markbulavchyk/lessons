@@ -1,39 +1,17 @@
 'use strict';
 
-// touchstart 
+const p = document.querySelectorAll('p');
+console.log(p);
 
-// touchmove
+    
+console.log();
 
-// touchend
+function  loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    document.body.append(script);
+}
 
-// touchenter
-
-// touchleave 
-
-// touchcancel
-
-window.addEventListener('DOMContentLoaded' , () => {
-    const box = document.querySelector('.box');
-    box.style.cssText = `width: 150px;
-                     height: 100px;
-                     background-color: red`;
-
-    box.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-
-        console.log('start');
-        console.log(e.targetTouches);
-    })
-
-    box.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-
-        console.log(e.targetTouches[0].pageX);
-    })
-
-});
-
-// touches 
-// targetTouches
-//changesTouches - пальцы которые совершили указанное действие 
-
+loadScript('js/test.js')
+loadScript('js/some.js')
